@@ -1,0 +1,52 @@
+//Program to demonstrate using of enum types
+import java.util.Scanner;
+
+class Main {
+
+  //enum class
+  enum Day{
+    LUNES, MARTES, MIERCOLES, JUEVES, VIERNES, SABADO, DOMINGO;
+  }
+
+  //condition, did user enter appropriate input
+  static boolean c = false;
+
+  Day day;
+
+  //Constructor
+  public Main(Day day){
+    this.day = day;
+  }
+
+  //method that prints a result using switch
+  public void printDay(){
+      switch (day)
+      {
+        case LUNES: System.out.println("esto es primero dia del semana");
+        break;
+        case MARTES: System.out.println("secundo dia de semana");
+        break;
+        case DOMINGO: System.out.println("esto es mejor dia de todo");
+        break;
+        default: System.out.println("esto es dias differentes de semana");
+        break;
+      }
+      c = true;
+  }
+
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Entre el dia de semana: ");
+    while(c == false){
+      String dia = sc.nextLine().toUpperCase();
+      try{
+        Main d1 = new Main(Day.valueOf(dia)); //Java.lang.Enum.valueOf() Method
+        System.out.print(dia + " ");
+        d1.printDay();
+      } catch (Exception ex){
+        System.out.println("Entre el dia de semana en espanol: "
+         + "LUNES, MARTES, MIERCOLES, JUEVES, VIERNES, SABADO, DOMINGO.");
+      }
+    }
+  }
+}
