@@ -1,0 +1,114 @@
+.header on
+.mode column
+
+CREATE TABLE students (
+  id INTEGER,
+  fname TEXT,
+  lname TEXT,
+  dob DATE,
+  grade INTEGER,
+  country TEXT
+);
+
+INSERT INTO students VALUES
+  (1, 'Joe', 'Smith', '1983-05-29', 5, 'USA'),
+  (2, 'Emma', 'Watson', '1989-02-19', 4, 'Canada'),
+  (3, 'Will', 'Smith', '1981-01-01', 5, 'USA'),
+  (4, 'Scott', 'Doe', '1989-02-19', 2, 'Mexico'),
+  (5, 'Huge', 'Jackman', '1993-11-11', 3, 'USA'),
+  (6, 'Emma', 'Patters', '1999-02-19', 4, 'USA');
+
+SELECT * FROM students;
+
+SELECT DISTINCT grade FROM students;
+
+SELECT COUNT(DISTINCT grade) FROM students;
+
+SELECT * FROM students
+WHERE lname = 'Smith';
+
+SELECT * FROM students
+WHERE grade BETWEEN 3 AND 4;
+
+SELECT fname, lname FROM students
+WHERE country = 'USA' AND grade = 5;
+
+SELECT fname, lname, grade
+FROM students
+ORDER BY grade DESC;
+
+INSERT INTO students (fname, lname, dob, grade, country)
+VALUES ('Patrick', 'Star', '1993-11-21', 3, 'Canada');
+
+INSERT INTO students (id, fname, lname, dob, grade, country)
+VALUES 
+  (8, 'Rick', 'Star', '1983-11-21', 5, 'Canada'),
+  (9, 'Joe', 'Satriani', '1963-01-11', 5, 'Italy'),
+  (10, 'Patrick', 'Star', '1993-11-21', 3, 'Italy');
+
+SELECT * FROM students;
+
+SELECT * FROM students
+WHERE id IS NULL;
+
+UPDATE students
+SET id = 7 WHERE id IS NULL;
+
+UPDATE students
+SET lname = 'Smith-Wesson'
+WHERE lname = 'Smith';
+
+SELECT * FROM students;
+
+DELETE FROM students
+WHERE country = 'Canada';
+
+SELECT * FROM students;
+
+SELECT * FROM students
+LIMIT 3;
+
+SELECT MIN(dob) AS youngest, fname, lname
+FROM students
+WHERE grade = 3;
+
+SELECT COUNT(grade)
+FROM students
+WHERE grade = 3;
+
+SELECT AVG(grade)
+FROM students;
+
+SELECT SUM(grade)
+FROM students;
+
+SELECT * FROM students
+WHERE dob LIKE '198%' AND fname LIKE '%o%';
+
+SELECT * FROM students;
+
+SELECT fname AS FirstName, lname AS [Last Name] FROM students
+WHERE country IN ('Italy', 'Mexico');
+
+CREATE TABLE classroom (
+  num INTEGER,
+  letter TEXT,
+  cabinet INTEGER
+);
+
+INSERT INTO classroom
+VALUES
+(1, 'a', 201),
+(2, 'f', 205),
+(3, 'b', 305),
+(3, 'a', 306),
+(3, 'c', 105),
+(1, 'b', 101),
+(1, 'c', 102);
+
+SELECT * FROM classroom;
+
+SELECT (s.fname || ' ' || s.lname) AS Student, (c.num || c.letter) AS Class 
+FROM classroom AS c, students AS s
+WHERE Class = '3a';
+
