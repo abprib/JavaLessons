@@ -1,5 +1,5 @@
-//Reverse words if its length is more then 5
-class Main {
+ve//Reverse words if its length is more then 5
+class WordReverse {
   public static void main(String[] args) {
     String sentence = "This sentence must be reversed";
     StringBuffer buf = new StringBuffer(sentence);
