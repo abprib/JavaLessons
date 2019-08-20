@@ -1,5 +1,5 @@
 //make a mask of '#' for the password
-class Main {
+class MaskifyCodeWars {
   public static void main(String[] args) {
     System.out.println(maskify("8685fgffg"));
   }
