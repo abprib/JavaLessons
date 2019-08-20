@@ -1,5 +1,5 @@
 //Validate the pin by length and numbers
-class Main {
+class PinValidate {
   public static void main(String[] args) {
     String pin = "1r34";
     boolean isValid = true;
