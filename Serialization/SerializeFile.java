@@ -6,12 +6,9 @@ public class SerializeFile {
     public static void main(String[] args) throws Exception {
         User user = new User(23,"Petr");
 
-        //this object knows how to connect and create a file
         FileOutputStream fos = new FileOutputStream("tempFile");
-        //Can write objects, but cant directly connect to files
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         //ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("tempFile");
-        //Serialize objects to file
         oos.writeObject(user);
         oos.close();
 
